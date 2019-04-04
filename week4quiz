@@ -1,0 +1,88 @@
+Question 1 
+a)
+curl https://www.staff.hs-mittweida.de/~wuenschi/data/media/compbiolbook/chapter-10-shell-programming--triplet-stop.sh
+
+b)
+#!/bin/bash
+# save as triplet-stop.sh
+# splits a sequence into triplets
+x=0
+while [ -n "${1:$x:3}" ]; do
+  seq=$seq${1:$x:3}" "
+  x=$(expr $x + 3)
+  if [ ${1:$x:3} == taa ] || [ $x –gt 8 ]; then
+    break
+  fi
+done
+echo "$seq"
+
+Question 2
+a)
+$ scp -i 45577234.pem tutes.txt ubuntu@ec2-13-239-117-230.ap-southeast-2.compute.amazonaws.com:
+tutes.txt                                     100%   15KB 228.0KB/s   00:00
+
+b)
+cat tutes.txt | uniq -c | sort
+      1 [Tutorial_1|TUE|04:00PM|C06]
+      1 [Tutorial_1|WED|04:00PM|C13]
+      1 [Tutorial_1|WED|04:00PM|C14]
+      1 [Tutorial_1|WED|05:00PM|C15]
+      1 [Tutorial_1|WED|10:00AM|C09]
+      1 [Tutorial_1|WED|10:00AM|C10]
+      2 [Tutorial_1|TUE|02:00PM|C01]
+     25 [Tutorial_1|FRI|06:00PM|C19]
+     25 [Tutorial_1|FRI|06:00PM|C20]
+     27 [Tutorial_1|FRI|02:00PM|C16]
+     27 [Tutorial_1|FRI|03:00PM|C18]
+     27 [Tutorial_1|TUE|05:00PM|C12]
+     28 [Tutorial_1|MON|01:00PM|C04]
+     28 [Tutorial_1|MON|06:00PM|C01]
+     28 [Tutorial_1|MON|11:00AM|C06]
+     28 [Tutorial_1|TUE|05:00PM|C11]
+     29 [Tutorial_1|FRI|01:00PM|C13]
+     29 [Tutorial_1|FRI|01:00PM|C14]
+     29 [Tutorial_1|FRI|03:00PM|C17]
+     29 [Tutorial_1|MON|11:00AM|C05]
+     29 [Tutorial_1|TUE|03:00PM|C07]
+     29 [Tutorial_1|TUE|03:00PM|C08]
+     29 [Tutorial_1|TUE|04:00PM|C10]
+     30 [Tutorial_1|FRI|02:00PM|C15]
+     30 [Tutorial_1|MON|01:00PM|C03]
+     30 [Tutorial_1|TUE|04:00PM|C09]
+
+Question 3
+nano australia.txt
+cat australia.txt
+i am fine
+hydrogenase is the answer
+dehydrogenase is the answer
+hydrogenase and dehydrogenase are the answers
+-1 -2 -3 -4
+1 2 3 4
+1.5 2.5 3.5 4.5
+-1.5 -2.5 -3.5 -4.5
+
+a) 11.2
+egrep '^\w+\s+\w+\s+\w+$' australia.txt
+i am fine
+
+b) 11.3
+grep -E "^-[0-9]+" australia.txt | grep -vE [.]
+-1 -2 -3 -4
+
+c) 11.4
+egrep -o '[[:space:]][-0-9]+\.[0-9]+[[:space:]]'
+ 2.5
+ -2.5
+
+d) 11.6
+grep -Ew 'hydrogenase' australia.txt | grep -vEw 'dehydrogenase'
+hydrogenase is the answer
+
+
+
+
+
+
+
+
