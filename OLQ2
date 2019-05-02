@@ -1,0 +1,34 @@
+#Q1
+#download structure.pdb into your AWS account
+scp -i 45577234.pem chapter-11-regex--structure.pdb ubuntu@ec2-13-239-117-230.ap-southeast-2.compute.amazonaws.com:
+
+#Change Beisel’s name to Weisel
+sed -n 's/Beisel/Weisel/p' chapter-11-regex--structure.pdb
+
+#Q2
+#Delete the first three lines of the file.
+nl chapter-11-regex--structure.pdb | sed '1,3d'
+
+#Q3
+#Print only lines 5 through 10.
+nl chapter-11-regex--structure.pdb | sed -n '5,10p'
+
+#Q4
+#Delete lines containing the word MET.
+nl chapter-11-regex--structure.pdb | sed '/MET/d'
+
+#Q5
+#Print all lines where the HELIX line contains the word ILE.
+nl chapter-11-regex--structure.pdb | sed -n '/HELIX\(.*\)ILE/p'
+
+#Q6
+#Append three stars to the end of lines starting with “H”.
+sed '/^H/ a ***' chapter-11-regex--structure.pdb
+
+#Q7
+#Replace the line containing SEQRES with SEQ
+sed '/SEQRES/c\SEQ' chapter-11-regex--structure.pdb
+
+#Q8
+#upload jabberwocky.txt into your AWS account
+$ scp -i 45577234.pem jabberwocky.txt ubuntu@ec2-13-239-117-230.ap-southeast-2.compute.amazonaws.com:
