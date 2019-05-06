@@ -1,0 +1,109 @@
+# Answer for Question 1
+
+# To download the file in my local machine
+curl http://www.gutenberg.org/files/76/76-0.txt > twain.txt
+
+# To upload the file in my AWS account
+scp -i 45577234.pem twain.txt ubuntu@ec2-13-239-117-230.ap-southeast-2.compute.amazonaws.com:
+
+# To list my AWS account
+ls
+
+# To convert all instances of the string ‘Huck’ to ‘HucK’
+python3
+ twainfile = open ("twain.txt").read()
+ newtwainfile = twainfile.replace("Huck","HucK")
+ print(newtwainfile)
+
+# Answer for Question 2
+
+# After downloading to upload the python file stdio.py to AWS account
+scp -i 45577234.pem stdio.py ubuntu@ec2-13-239-117-230.ap-southeast-2.compute.amazonaws.com:
+
+# To list my AWS account
+ls
+
+# To create and read a pyhthon file named useragrument.py
+nano useragrument.py
+cat useragrument.py
+
+import sys
+import stdio
+
+stdio.write('Hi, ')
+stdio.write(sys.argv[1])
+stdio.writeln('. How are you?')
+
+# Then I tried to execute userargument.py with each of the given command lines
+
+# Answer for Question 3
+# To test whether a given integer corresponds to a leap year in the Gregorian calendar
+
+python3
+>>> year = int(input("Enter a year: "))
+Enter a year: 2000
+>>> if (year % 4) == 0:
+...    if (year % 100) == 0:
+...        if (year % 400) == 0:
+...            print("{0} is a leap year".format(year))
+...        else:
+...            print("{0} is not a leap year".format(year))
+...    else:
+...        print("{0} is a leap year".format(year))
+... else:
+...    print("{0} is not a leap year".format(year))
+...
+2000 is a leap year
+
+
+# Answer for Question 4
+
+# To code a program that takes two integers a and b from the command line and writes a random integer between a and b
+python3
+>>> import stdio
+>>> import sys
+>>> import random
+
+>>> a=int(input("a: "))
+a: 10
+>>> b=int(input("b: "))
+b: 15
+>>> stdio.writeln(random.randrange(a,b+1))
+11
+
+# Answer for Question 5
+
+# To code program that takes two integers m and d from the command line and writes True if day d of month m is between March 20
+20, and False otherwise.
+
+python3
+>>> import stdio
+>>> import sys
+
+>>> m=int(input("m: "))
+m: 3
+>>> d=int(input("d: "))
+d: 29
+
+>>> if (m == 3 and d >= 20 and d <=31 ) or ( m == 6 and d >= 1 and d <=20) or (m > 3 and m < 6 and d >=1 and d <=30) or (m == 5 and d ==31): stdio.writeln('True')
+...
+True
+
+# Answer for Question 6
+
+#To calculate total accumulation
+
+python3
+>>> import stdio
+>>> import sys
+>>> from math import *
+>>> p=float(input("p: "))
+p: 1000
+>>> r=float(input("r: "))
+r: 1.12
+>>> t=float(input("t: "))
+t: 5
+>>> Amount=p*(e**(r*t))
+>>> print(Amount)
+270426.4074261527
+
